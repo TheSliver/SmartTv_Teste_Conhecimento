@@ -1,37 +1,33 @@
 import java.util.Scanner;
 
 public class Usuario {
-    public static void main(String[] args){
-        SmartTv smartTv = new SmartTv();
-        Scanner inVal = new Scanner(System.in);
+    public static void main(String[] args) {
+        SmartTv smartTv = new SmartTv();//instancia a classe para uso na classe usuario.
 
+        Scanner valorEntrada = new Scanner(System.in); //Para entrada de valor do teclado.
+        int opcaoUsuario;
 
-        int opcao;//= inVal.nextInt();
-        do  {
-            opcao = inVal.nextInt();
-            if (opcao == 1 && !smartTv.isLigado) {
-                smartTv.setLigado();
-            } else if (opcao == 2 && smartTv.isLigado) {
-                smartTv.aumentaCanal();
-            } else if (opcao == 3 && smartTv.isLigado) {
-                smartTv.diminuirCanal();
-            } else if (opcao == 4 && smartTv.isLigado) {
-                smartTv.aumentaVolume();
-            } else if (opcao == 5 && smartTv.isLigado) {
-                smartTv.diminuirVolume();
-            } else if (opcao == 6 && smartTv.isLigado) {
-                int mudarCanalPara = inVal.nextInt();
-                smartTv.setCanal(mudarCanalPara);
-            } else if (opcao == 7 && smartTv.isLigado) {
-                smartTv.setDesligado();
-            } else if (opcao >= 2 && opcao <= 5 && !smartTv.isLigado) {
-                System.out.println("Ligue a TV!");
+        do{ //inicio do loop
+            if (!smartTv.isLigado) {
+                System.out.println("1 - Ligar TV");
+                System.out.println("8 - Sair");
             }
+            if (smartTv.isLigado) {
+                System.out.println("2 - Subir Canal");
+                System.out.println("3 - Diminuir Canal");
+                System.out.println("4 - Aumentar Volume");
+                System.out.println("5 - Diminuir Volume");
+                System.out.println("6 - Mudar de Canal");
+                System.out.println("7 - Desligar Tv");
+                System.out.println("8 - Sair");
+            }
+            opcaoUsuario = valorEntrada.nextInt(); // le o proximo valor digitado pelo usuario.
 
-            String status = smartTv.isLigado ? "Ligada" : "Desligada";
-            System.out.println("A TV esta " + status);
-            System.out.println("Canal:  " + smartTv.canal);
-            System.out.println("O volume esta em  " + smartTv.volume);
-        }while(opcao != 8);
+            smartTv.controlaSmartTv(opcaoUsuario); //chama o metodo da classe smartTv passando o valor digitado pelo usuario.
+
+            if (!smartTv.isLigado){
+                break;
+            }
+        } while (opcaoUsuario != 8); //Repete enquanto o usuario nao digitar 8 para sair.
     }
 }
