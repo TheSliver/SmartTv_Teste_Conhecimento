@@ -23,9 +23,9 @@ public class Usuario {
             }
             opcaoUsuario = valorEntrada.nextInt(); // le o proximo valor digitado pelo usuario.
 
-            smartTv.controlaSmartTv(opcaoUsuario); //chama o metodo da classe smartTv passando o valor digitado pelo usuario.
+            boolean val = smartTv.controlaSmartTv(opcaoUsuario); //chama o metodo da classe smartTv passando o valor digitado pelo usuario e recebe o retorno.
 
-            if (!smartTv.isLigado){
+            if (!smartTv.isLigado && val){
                 break;
             }
         } while (opcaoUsuario != 8); //Repete enquanto o usuario nao digitar 8 para sair.

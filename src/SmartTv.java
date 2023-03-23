@@ -9,26 +9,46 @@ public class SmartTv {
     public void setCanal(int novoCanal) {
         canal = novoCanal;
     }
+
     public void ligar() {
         isLigado = true;
     }
+
     public void desligar() {
         isLigado = false;
     }
+
     public void aumentarVolume() {
-        volume ++;
-    }
-    public void diminuirVolume() {
-        volume --;
-    }
-    public void aumentarCanal() {
-        canal ++;
-    }
-    public void diminuirCanal() {
-        canal --;
+        volume++;
     }
 
-    public void controlaSmartTv(int opcaoUsuario) {
+    public void diminuirVolume() {
+        volume--;
+    }
+
+    public void aumentarCanal() {
+        canal++;
+    }
+
+    public void diminuirCanal() {
+        canal--;
+    }
+
+    public boolean controlaSmartTv(int opcaoUsuario) {
+        boolean valorValido = false;
+
+        if (!isLigado && (!(opcaoUsuario == 1) && !(opcaoUsuario== 8))){
+            System.out.println("Erro digite (1 - Ligar TV) ou (8 - Sair)");
+        }else if(isLigado && ((opcaoUsuario == 1) || (opcaoUsuario== 8))) {
+            valorValido = true;
+        } else if (isLigado && opcaoUsuario <= 1 || opcaoUsuario >= 9) {
+            System.out.println("Erro digite (2 - Subir Canal), (3 - Diminuir Canal), (4 - Aumentar Volume), (5 - Diminuir Volume),");
+            System.out.println("(6 - Mudar de Canal), (7 - Desligar Tv) ou (8 - Sair)");
+        }else{
+            valorValido = true;
+        }
+
+        if(valorValido) {
             if (opcaoUsuario == 1 && !isLigado) {
                 ligar();
                 System.out.println("A Tv foi ligada...");
@@ -69,7 +89,7 @@ public class SmartTv {
                 System.out.println("|                                 |");
                 System.out.println("|_________________________________|");
                 System.out.println("      |                    |       ");
-            }else{
+            } else {
                 System.out.println("               ");
                 System.out.println("._________________________________.");
                 System.out.println("|                                 |");
@@ -81,5 +101,7 @@ public class SmartTv {
                 System.out.println("|_________________________________|");
                 System.out.println("      |                    |       ");
             }
+        }
+        return valorValido;
     }
 }
