@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class Usuario {
     public static void main(String[] args) {
-        SmartTv smartTv = new SmartTv();//instancia a classe para uso na classe usuario.
+        SmartTv smartTv = new SmartTv();// instancia a classe para uso na classe usuario.
 
         try (Scanner valorEntrada = new Scanner(System.in)) {
             int opcaoUsuario;
 
-            do{ //inicio do loop
+            do { // inicio do loop
                 if (!smartTv.isLigado) {
                     System.out.println("1 - Ligar TV");
                     System.out.println("8 - Sair");
@@ -23,12 +23,14 @@ public class Usuario {
                 }
                 opcaoUsuario = valorEntrada.nextInt(); // le o proximo valor digitado pelo usuario.
 
-                boolean valorDigitadoValido = smartTv.controlaSmartTv(opcaoUsuario); //chama o metodo da classe smartTv passando o valor digitado pelo usuario e recebe o retorno.
+                // chama o metodo da classe smartTv passando o valor digitado pelo usuario e
+                // recebe o retorno.
+                boolean valorDigitadoValido = smartTv.controlaSmartTv(opcaoUsuario);
 
-                if (!smartTv.isLigado && valorDigitadoValido){
+                if (!smartTv.isLigado && valorDigitadoValido) {
                     break;
                 }
-            } while (opcaoUsuario != 8); //Repete enquanto o usuario nao digitar 8 para sair.
+            } while (opcaoUsuario != 8); // Repete enquanto o usuario nao digitar 8 para sair.
         }
     }
 }

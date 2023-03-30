@@ -12,6 +12,7 @@ public class SmartTv {
 
     public void ligar() {
         isLigado = true;
+        System.out.println("A Tv foi ligada...");
     }
 
     public void desligar() {
@@ -38,14 +39,13 @@ public class SmartTv {
     public boolean controlaSmartTv(int opcaoUsuario) {
         boolean valorValido = false;
         String msgValorValido = "";
-        
+
         if (isLigado) {
             if (opcaoUsuario <= 1 || opcaoUsuario >= 9) {
-                
-                msgValorValido = 
-                        "Erro digite (2 - Subir Canal), (3 - Diminuir Canal), (4 - Aumentar Volume), (5 - Diminuir Volume),"+
-                        "(6 - Mudar de Canal), (7 - Desligar Tv) ou (8 - Sair)";
-            }else{
+
+                msgValorValido = "Erro digite (2 - Subir Canal), (3 - Diminuir Canal), (4 - Aumentar Volume), (5 - Diminuir Volume),";
+                msgValorValido += "(6 - Mudar de Canal), (7 - Desligar Tv) ou (8 - Sair)";
+            } else {
                 valorValido = true;
             }
         } else {
@@ -55,7 +55,7 @@ public class SmartTv {
                 valorValido = true;
             }
         }
-        
+
         if (valorValido) {
 
             if (isLigado) {
@@ -84,14 +84,13 @@ public class SmartTv {
                         desligar();
                         break;
                 }
-                
+
                 Tela(opcaoUsuario);
             } else {
 
                 switch (opcaoUsuario) {
                     case 1:
                         ligar();
-                        System.out.println("A Tv foi ligada...");
                         Tela(opcaoUsuario);
                         break;
                     case 2:
@@ -104,33 +103,33 @@ public class SmartTv {
                         break;
                 }
             }
-        }else{
+        } else {
             System.out.println(msgValorValido);
         }
         return valorValido;
     }
 
-    public void Tela(int opcaoUsuario){
-        if (!(opcaoUsuario == 7) && !(opcaoUsuario == 8)){
+    public void Tela(int opcaoUsuario) {
+        if (!(opcaoUsuario == 7) && !(opcaoUsuario == 8)) {
+            // caso o volume seja menor igual a zero mostra mudo no volume
+            String volumeDesc = volume <= 0 ? "Mudo" : String.format("%-4s", volume);
+
             System.out.println("               ");
             System.out.println("._________________________________.");
-            System.out.println("|                                 |");           
+            System.out.println("|                                 |");
             System.out.println("|            Tv Ligada            |");
-            System.out.println("|      Canal:  " + canal + "                  |");
-            String volumeDesc = volume <= 0 ? "Mudo" : String.valueOf(volume);
-            System.out.println("|     Volume:  " + volumeDesc + "                 |");
+            System.out.println("|      Canal: " + canal + "                   |");
+            System.out.println("|     Volume: " + volumeDesc + "                |");
             System.out.println("|                                 |");
             System.out.println("|_________________________________|");
             System.out.println("      |                    |       ");
             System.out.println("               ");
-        }else{
+        } else {
             System.out.println("               ");
             System.out.println("._________________________________.");
             System.out.println("|                                 |");
-
             System.out.println("|           Tv Desligada          |");
             System.out.println("|                                 |");
-
             System.out.println("|                                 |");
             System.out.println("|_________________________________|");
             System.out.println("      |                    |       ");
