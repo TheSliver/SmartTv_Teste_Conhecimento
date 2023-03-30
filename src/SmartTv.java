@@ -55,17 +55,6 @@ public class SmartTv {
                 valorValido = true;
             }
         }
-        // if (!isLigado && (!(opcaoUsuario == 1) && !(opcaoUsuario == 8))) {
-        // System.out.println("Erro digite (1 - Ligar TV) ou (8 - Sair)");
-        // } else if (isLigado && ((opcaoUsuario == 1) || (opcaoUsuario == 8))) {
-        // valorValido = true;
-        // } else if (isLigado && opcaoUsuario <= 1 || opcaoUsuario >= 9) {
-        // System.out.println("Erro digite (2 - Subir Canal), (3 - Diminuir Canal), (4 -
-        // Aumentar Volume), (5 - Diminuir Volume),");
-        // System.out.println("(6 - Mudar de Canal), (7 - Desligar Tv) ou (8 - Sair)");
-        // } else {
-        // valorValido = true;
-        // }
         
         if (valorValido) {
 
