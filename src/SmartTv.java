@@ -38,7 +38,7 @@ public class SmartTv {
     public boolean controlaSmartTv(int opcaoUsuario) {
         boolean valorValido = false;
         String msgValorValido = "";
-
+        
         if (isLigado) {
             if (opcaoUsuario <= 1 || opcaoUsuario >= 9) {
                 
@@ -91,43 +91,19 @@ public class SmartTv {
                         setCanal(mudarCanalPara);
                         break;
                     case 7:
+                    case 8:
                         desligar();
-                        System.out.println("               ");
-                        System.out.println("._________________________________.");
-                        System.out.println("|                                 |");
-        
-                        System.out.println("|           Tv Desligada          |");
-                        System.out.println("|                                 |");
-        
-                        System.out.println("|                                 |");
-                        System.out.println("|_________________________________|");
-                        System.out.println("      |                    |       ");
                         break;
                 }
-
-                System.out.println("               ");
-                System.out.println("._________________________________.");
-                System.out.println("|                                 |");
-
-                if (opcaoUsuario != 8) {
-                    System.out.println("|            Tv Ligada            |");
-                    System.out.println("|      Canal:  " + canal + "                  |");
-                    String volumeDesc = volume <= 0 ? "Mudo" : String.valueOf(volume);
-                    System.out.println("|     Volume:  " + volumeDesc + "                 |");
-                } else {
-                    System.out.println("|           Tv Desligada          |");
-                    System.out.println("|                                 |");
-                }
-
-                System.out.println("|                                 |");
-                System.out.println("|_________________________________|");
-                System.out.println("      |                    |       ");
+                
+                Tela(opcaoUsuario);
             } else {
 
                 switch (opcaoUsuario) {
                     case 1:
                         ligar();
                         System.out.println("A Tv foi ligada...");
+                        Tela(opcaoUsuario);
                         break;
                     case 2:
                     case 3:
@@ -137,12 +113,38 @@ public class SmartTv {
                     case 7:
                         System.out.println("Ligue a TV!");
                         break;
-
                 }
             }
         }else{
             System.out.println(msgValorValido);
         }
         return valorValido;
+    }
+
+    public void Tela(int opcaoUsuario){
+        if (!(opcaoUsuario == 7) && !(opcaoUsuario == 8)){
+            System.out.println("               ");
+            System.out.println("._________________________________.");
+            System.out.println("|                                 |");           
+            System.out.println("|            Tv Ligada            |");
+            System.out.println("|      Canal:  " + canal + "                  |");
+            String volumeDesc = volume <= 0 ? "Mudo" : String.valueOf(volume);
+            System.out.println("|     Volume:  " + volumeDesc + "                 |");
+            System.out.println("|                                 |");
+            System.out.println("|_________________________________|");
+            System.out.println("      |                    |       ");
+            System.out.println("               ");
+        }else{
+            System.out.println("               ");
+            System.out.println("._________________________________.");
+            System.out.println("|                                 |");
+
+            System.out.println("|           Tv Desligada          |");
+            System.out.println("|                                 |");
+
+            System.out.println("|                                 |");
+            System.out.println("|_________________________________|");
+            System.out.println("      |                    |       ");
+        }
     }
 }
